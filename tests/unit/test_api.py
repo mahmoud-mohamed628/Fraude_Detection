@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+
 from src.fraud.serving.api import app
 
 client = TestClient(app)
