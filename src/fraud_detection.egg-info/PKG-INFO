@@ -9,3 +9,8 @@ Requires-Dist: scikit-learn
 Requires-Dist: pandas
 Requires-Dist: pytest
 Requires-Dist: dvc
+Requires-Dist: pandera
+Requires-Dist: prometheus-client
+Requires-Dist: shap
+Requires-Dist: locust
+Requires-Dist: PyYAML

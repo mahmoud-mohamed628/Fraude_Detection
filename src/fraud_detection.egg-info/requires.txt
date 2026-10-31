@@ -6,3 +6,8 @@ scikit-learn
 pandas
 pytest
 dvc
+pandera
+prometheus-client
+shap
+locust
+PyYAML

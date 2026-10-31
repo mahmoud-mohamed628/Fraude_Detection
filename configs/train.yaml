@@ -1,0 +1,8 @@
+model_name: fraud-detector
+experiment_name: fraud-training
+random_state: 42
+test_size: 0.2
+model:
+  type: RandomForestClassifier
+  n_estimators: 200
+  class_weight: balanced

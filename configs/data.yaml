@@ -1,0 +1,4 @@
+reference_data: data/creditcard.csv
+test_data: data/test.csv
+database: data/fraud.db
+dvc_remote: localstore

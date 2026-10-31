@@ -13,7 +13,13 @@ dependencies = [
     "scikit-learn",
     "pandas",
     "pytest",
-    "dvc"
+    "dvc",
+    "pandera",
+    "prometheus-client",
+    "shap",
+    "locust",
+    "PyYAML",
+    "evidently"
 ]
 
 [tool.ruff]
@@ -21,3 +27,4 @@ line-length = 88
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,8 +1,10 @@
 .PHONY: setup lint test up
 
 setup:
-	pip install -e .
-	pip install pre-commit black ruff pytest
+	python -m pip install --upgrade pip
+	python -m pip install -e .
+	python -m pip install -r requirements.txt
+	python -m pip install pre-commit black ruff pytest
 	pre-commit install
 
 lint:

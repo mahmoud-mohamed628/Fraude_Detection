@@ -1,14 +1,22 @@
-FROM python:3.11-slim
+FROM python:3.11-slim AS builder
 
+WORKDIR /wheels
+COPY requirements.txt .
+RUN python -m pip install --upgrade pip && \
+    pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
+
+FROM python:3.11-slim AS runtime
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH=/home/frauduser/.local/bin:$PATH
 WORKDIR /app
 
-# Installation des dépendances (avec pandas et mlflow)
-RUN pip install --no-cache-dir fastapi pydantic uvicorn pandas mlflow
-
-# Copie du code source
+RUN addgroup --system fraud && adduser --system --ingroup fraud frauduser
+COPY --from=builder /wheels /wheels
+RUN pip install --no-cache-dir /wheels/*.whl && rm -rf /wheels
 COPY src/ /app/src/
+COPY configs/ /app/configs/
 
+USER frauduser
 EXPOSE 8000
-
-# Commande de lancement de l'API
 CMD ["uvicorn", "src.fraud.serving.api:app", "--host", "0.0.0.0", "--port", "8000"]

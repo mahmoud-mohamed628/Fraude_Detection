@@ -1,5 +1,11 @@
 README.md
 pyproject.toml
+src/fraud/data/__init__.py
+src/fraud/data/validation.py
+src/fraud/serving/api.py
+src/fraud/streaming/__init__.py
+src/fraud/streaming/consumer.py
+src/fraud/streaming/producer.py
 src/fraud_detection.egg-info/PKG-INFO
 src/fraud_detection.egg-info/SOURCES.txt
 src/fraud_detection.egg-info/dependency_links.txt

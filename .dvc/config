@@ -1,0 +1,4 @@
+['remote "localstore"']
+    url = ../fraud-detection-dvc-storage
+['core']
+    remote = localstore
