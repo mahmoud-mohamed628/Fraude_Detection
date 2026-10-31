@@ -79,7 +79,8 @@ while True:
             suspect = data[data["decision"] == "FRAUD"] if total else pd.DataFrame()
             if suspect.empty:
                 st.info(
-                    "No suspect transaction yet; SHAP values are returned in `/predict` responses."  # noqa: E501
+                    "No suspect transaction yet; SHAP values are returned in "
+                    "`/predict` responses."
                 )
             else:
                 st.dataframe(
