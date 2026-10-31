@@ -2,8 +2,8 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Installation des dépendances
-RUN pip install --no-cache-dir fastapi pydantic uvicorn
+# Installation des dépendances (avec pandas et mlflow)
+RUN pip install --no-cache-dir fastapi pydantic uvicorn pandas mlflow
 
 # Copie du code source
 COPY src/ /app/src/

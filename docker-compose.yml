@@ -1,14 +1,4 @@
 version: '3.8'
-services:
-  mlflow:
-    image: python:3.10-slim
-    ports:
-      - "5000:5000"
-    command: >
-      bash -c "pip install mlflow && 
-      mlflow server --host 0.0.0.0 --port 5000"
-
-version: '3.8'
 
 services:
   mlflow:
@@ -23,7 +13,19 @@ services:
       dockerfile: Dockerfile.api
     ports:
       - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
     volumes:
-      - ./src:/app/src :z
+      - ./src:/app/src:z
     depends_on:
       - mlflow
+
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    command:
+      - redpanda
+      - start
+      - --mode dev-container
+    ports:
+      - "9092:9092"
+      - "9644:9644"
