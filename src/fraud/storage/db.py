@@ -9,9 +9,7 @@ CREATE TABLE IF NOT EXISTS predictions (
     latency_ms REAL NOT NULL,
     timestamp TEXT NOT NOT NULL
 );
-""".replace(
-    "timestamp TEXT NOT NOT NULL", "timestamp TEXT NOT NULL"
-)
+""".replace("timestamp TEXT NOT NOT NULL", "timestamp TEXT NOT NULL")
 
 
 def connect(database: str = "data/fraud.db") -> sqlite3.Connection:
