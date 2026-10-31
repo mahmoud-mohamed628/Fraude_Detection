@@ -7,3 +7,23 @@ services:
     command: >
       bash -c "pip install mlflow && 
       mlflow server --host 0.0.0.0 --port 5000"
+
+version: '3.8'
+
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.2
+    ports:
+      - "5000:5000"
+    command: mlflow server --host 0.0.0.0
+
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src :z
+    depends_on:
+      - mlflow
