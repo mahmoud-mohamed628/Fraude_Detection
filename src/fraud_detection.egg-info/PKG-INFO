@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: fraud_detection
+Version: 0.1.0
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: pydantic
+Requires-Dist: mlflow
+Requires-Dist: scikit-learn
+Requires-Dist: pandas
+Requires-Dist: pytest
+Requires-Dist: dvc

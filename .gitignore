@@ -1,0 +1,4 @@
+data/
+mlruns/
+.env
+__pycache__/
