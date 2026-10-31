@@ -1,9 +1,9 @@
 import os
+
+import mlflow.pyfunc
+import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-from typing import List
-import pandas as pd
-import mlflow.pyfunc
 
 app = FastAPI(title="Fraud Detection API")
 
@@ -23,7 +23,7 @@ def load_ml_model():
         model_uri = f"models:/{MODEL_NAME}/{MODEL_STAGE}"
         model = mlflow.pyfunc.load_model(model_uri)
         print(f"✅ MLflow Model loaded successfully from {model_uri}")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(
             f"⚠️ Could not load model from MLflow ({e}). Running in fallback/mock mode."
         )
@@ -49,7 +49,7 @@ class PredictionResponse(BaseModel):
     decision: str
     threshold: float
     model_version: str
-    top_features: List[FeatureImportance]
+    top_features: list[FeatureImportance]
     latency_ms: float
 
 

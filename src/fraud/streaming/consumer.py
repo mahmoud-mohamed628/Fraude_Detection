@@ -1,4 +1,5 @@
 import json
+
 import requests
 from kafka import KafkaConsumer
 
@@ -26,7 +27,7 @@ def start_consumer():
                     print(f"   ⚡ API Prediction: {response.json()}")
                 else:
                     print(f"   ⚠️ API Error ({response.status_code}): {response.text}")
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 print(f"   ❌ Could not connect to API: {e}")
 
             print("-" * 50)
